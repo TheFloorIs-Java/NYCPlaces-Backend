@@ -1,14 +1,11 @@
 package App.Model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Data //LOMBOK: data introduces automatic getter/setters
 @AllArgsConstructor
@@ -16,9 +13,12 @@ import javax.persistence.Id;
 @Entity
 public class Place {
     @Id //SPRING ORM: primary key
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column //SPRING ORM
     int id;
     @Column
     String title;
+    @OneToMany(mappedBy = "place")
+    @JsonManagedReference
+    List<Comment> comments;
 }

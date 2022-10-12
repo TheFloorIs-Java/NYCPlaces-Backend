@@ -11,6 +11,6 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
     @Query("FROM Comment where id= :id")
     public List<Comment> getCommentById(@Param("id") int id);
 
-    @Query("FROM Comment where id = (select (id) from Comment)")
+    @Query("FROM Comment where year= (select max(year) from Comment)")
     public Comment getNewestComment();
 }
