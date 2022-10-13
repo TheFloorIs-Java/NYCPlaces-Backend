@@ -21,6 +21,8 @@ public class PlaceController {
     public List<Place> getAllPlaces() {
         return ps.getAllPlaces();
     }
+    @GetMapping("/place/{id}")
+    public Place getPlaceById(@PathVariable int id) {return ps.getPlaceById(id);}
 
     @PostMapping("/place")
     public Place addPlace(@RequestBody Place p) {

@@ -41,4 +41,8 @@ public class CommentService {
     public void deleteById(int id) {
         cr.deleteById(id);
     }
+    public List<Comment> getCommentsByPlace(int placeId){
+        Place p = ps.getPlaceById(placeId);
+        return p.getComments();
+    }
 }

@@ -13,4 +13,5 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
 
     @Query("FROM Comment where year= (select max(year) from Comment)")
     public Comment getNewestComment();
+
 }
